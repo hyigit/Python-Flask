@@ -1,7 +1,11 @@
-from flask import Flask
-app = Flask('app')
+from flask import Flask, render_template
+app = Flask(__name__)
 
 @app.route('/')
+def index():
+  return render_template('index.html', number1 = 10, number2 = 20)
+
+@app.route('/hello')
 def hello_world():
   return 'Hello, Alp!'
 
@@ -13,5 +17,8 @@ def search():
 def deleteId(id):
   return 'Id: ' + id
 
-app.run(host='0.0.0.0', port=8080)
+if __name__ == '__main__':
+  app.run(debug=True)
+
+
 
